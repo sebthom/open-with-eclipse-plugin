@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %OpenWithEclipse_PluginName
+Bundle-SymbolicName: de.sebthom.eclipse.open-with-eclipse;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Sebastian Thomschke
+Bundle-Localization: src/main/java/de/sebthom/eclipse/open_with_eclipse/localization/messages
+Automatic-Module-Name: de.sebthom.eclipse.open_with_eclipse
+Bundle-Activator: de.sebthom.eclipse.open_with_eclipse.OpenWithEclipsePlugin
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.annotation;bundle-version="2.0.0";resolution:=optional,
+ org.eclipse.osgi,
+ org.eclipse.ui,
+ org.apache.commons.lang3;bundle-version="3.12.0",
+ de.sebthom.eclipse.commons;bundle-version="1.0.0",
+ net.sf.jstuff.core;bundle-version="5.18.0"
+Bundle-ActivationPolicy: lazy

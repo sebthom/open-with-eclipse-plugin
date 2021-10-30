@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.startup">
+      <startup class="de.sebthom.eclipse.open_with_eclipse.StartupListener" />
+   </extension>
+   <!-- ===================================== -->
+   <!-- Preferences                           -->
+   <!-- ===================================== -->
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="de.sebthom.eclipse.open_with_eclipse.prefs.OpenWithEclipsePreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="de.sebthom.eclipse.open_with_eclipse.prefs.PreferencePage"
+         name="%OpenWithEclipse_PluginName"
+         class="de.sebthom.eclipse.open_with_eclipse.prefs.OpenWithEclipsePreferencePage"/>
+   </extension>
+</plugin>
