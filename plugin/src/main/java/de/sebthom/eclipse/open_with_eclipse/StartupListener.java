@@ -22,7 +22,7 @@ import de.sebthom.eclipse.commons.ui.UI;
 import de.sebthom.eclipse.open_with_eclipse.localization.Messages;
 import de.sebthom.eclipse.open_with_eclipse.prefs.PluginPreference;
 import net.sf.jstuff.core.Strings;
-import net.sf.jstuff.core.ref.ObservableRef;
+import net.sf.jstuff.core.ref.MutableObservableRef;
 
 /**
  * @author Sebastian Thomschke
@@ -40,7 +40,7 @@ public class StartupListener implements IStartup {
          && !WindowsRegistryHelper.hasOpenWithRegistryEntry()) {
 
          UI.run(() -> {
-            final var menuEntryLabel = new ObservableRef<>(PluginPreference.getOpenWithContextMenuEntryLabel());
+            final var menuEntryLabel = MutableObservableRef.of(PluginPreference.getOpenWithContextMenuEntryLabel());
 
             final var dlg = new MessageDialog( //
                UI.getShell(), //
