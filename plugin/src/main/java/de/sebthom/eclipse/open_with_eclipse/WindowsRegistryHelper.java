@@ -24,7 +24,7 @@ public abstract class WindowsRegistryHelper {
    private static final String DEFAULT_VALUE_NAME = null;
 
    public static void createOpenWithRegistryEntry(@NonNull final Path launcherExe, @NonNull final String contextMenuEntryLabel) {
-      Args.exists("launcherExe", launcherExe);
+      Args.isFileReadable("launcherExe", launcherExe);
       Args.notBlank("contextMenuEntryLabel", contextMenuEntryLabel);
 
       final var keyPath = WindowsRegistry.join(SOFTWARE_CLASSES_WILDCARD_SHELL, contextMenuEntryLabel);
@@ -81,7 +81,6 @@ public abstract class WindowsRegistryHelper {
    }
 
    public static int removeOpenWithRegistryEntries(@NonNull final Path launcherExe) {
-      Args.exists("launcherExe", launcherExe);
       var deleted = 0;
       final var launcherExePath = launcherExe.toAbsolutePath().toString();
       for (final var keyName : HKEY_CURRENT_USER.getKeys(SOFTWARE_CLASSES_WILDCARD_SHELL)) {
