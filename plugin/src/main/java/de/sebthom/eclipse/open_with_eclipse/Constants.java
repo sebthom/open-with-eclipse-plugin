@@ -4,6 +4,8 @@
  */
 package de.sebthom.eclipse.open_with_eclipse;
 
+import static net.sf.jstuff.core.validation.NullAnalysisHelper.*;
+
 import java.nio.file.Path;
 
 /**
@@ -13,7 +15,7 @@ public interface Constants {
 
    String IMAGE_ICON = "src/main/resources/images/open_with_eclipse.png";
 
-   Path LAUNCHER_EXE = Path.of(System.getProperty("eclipse.launcher", "eclipse.exe"));
+   Path LAUNCHER_EXE = Path.of(asNonNull(System.getProperty("eclipse.launcher", "eclipse.exe")));
 
-   String LAUNCHER_NAME = System.getProperty("eclipse.launcher.name", "Eclipse");
+   String LAUNCHER_NAME = asNonNull(System.getProperty("eclipse.launcher.name", "Eclipse"));
 }

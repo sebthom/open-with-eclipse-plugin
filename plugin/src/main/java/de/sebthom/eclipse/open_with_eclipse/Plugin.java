@@ -4,6 +4,9 @@
  */
 package de.sebthom.eclipse.open_with_eclipse;
 
+import static net.sf.jstuff.core.validation.NullAnalysisHelper.*;
+
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.osgi.framework.BundleContext;
 
@@ -22,16 +25,16 @@ public class Plugin extends AbstractEclipsePlugin {
    /**
     * during runtime you can get ID with getBundle().getSymbolicName()
     */
-   public static final String PLUGIN_ID = Plugin.class.getPackage().getName().replace('_', '-');
+   public static final String PLUGIN_ID = asNonNull(Plugin.class.getPackage()).getName().replace('_', '-');
 
-   private static Plugin instance;
+   private static @Nullable Plugin instance;
 
    /**
     * @return the shared instance
     */
    public static Plugin get() {
       Assert.notNull(instance, "Default plugin instance is still null.");
-      return instance;
+      return asNonNull(instance);
    }
 
    public static PluginLogger log() {
@@ -48,8 +51,9 @@ public class Plugin extends AbstractEclipsePlugin {
 
    @Override
    public BundleResources getBundleResources() {
+      var bundleResources = this.bundleResources;
       if (bundleResources == null) {
-         bundleResources = new BundleResources(this, "src/main/resources");
+         bundleResources = this.bundleResources = new BundleResources(this, "src/main/resources");
       }
       return bundleResources;
    }
@@ -58,7 +62,10 @@ public class Plugin extends AbstractEclipsePlugin {
    protected void initializeImageRegistry(final ImageRegistry registry) {
       for (final var field : Constants.class.getFields()) {
          if (Fields.isStatic(field) && field.getType() == String.class && field.getName().startsWith("IMAGE_")) {
-            registerImage(registry, Fields.read(null, field));
+            final String imagePath = Fields.read(null, field);
+            if (imagePath != null) {
+               registerImage(registry, imagePath);
+            }
          }
       }
    }
