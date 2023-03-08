@@ -118,7 +118,7 @@ jobs:
           ${{ github.event.inputs.additional_maven_args }} \
           clean verify
 
-        mv updatesite/target/de.sebthom.eclipse.open-with-eclipse.updatesite-*.zip updatesite/target/de.sebthom.eclipse.open-with-eclipse.updatesite.zip
+        mv updatesite/target/de.sebthom.eclipse.open_with_eclipse.updatesite-*.zip updatesite/target/de.sebthom.eclipse.open_with_eclipse.updatesite.zip
 
 
     - name: "Delete previous 'latest' release"
@@ -160,7 +160,7 @@ jobs:
         hub release create "$RELEASE_NAME" \
           -t "${{ github.sha }}" \
           --message "$RELEASE_NAME" \
-          --attach "updatesite/target/de.sebthom.eclipse.open-with-eclipse.updatesite.zip" \
+          --attach "updatesite/target/de.sebthom.eclipse.open_with_eclipse.updatesite.zip" \
           --prerelease
 
 

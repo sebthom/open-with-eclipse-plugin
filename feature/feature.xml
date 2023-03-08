@@ -6,11 +6,11 @@
    @author Sebastian Thomschke
 -->
 <feature
-      id="de.sebthom.eclipse.open-with-eclipse.feature"
+      id="de.sebthom.eclipse.open_with_eclipse.feature"
       label="%name"
       version="1.0.0.qualifier"
       provider-name="Sebastian Thomschke"
-      plugin="de.sebthom.eclipse.open-with-eclipse"
+      plugin="de.sebthom.eclipse.open_with_eclipse"
       license-feature="org.eclipse.license"
       license-feature-version="2.0.2.qualifier">
 
@@ -41,7 +41,7 @@
    </requires>
 
    <plugin
-         id="de.sebthom.eclipse.open-with-eclipse"
+         id="de.sebthom.eclipse.open_with_eclipse"
          download-size="0"
          install-size="0"
          version="0.0.0"

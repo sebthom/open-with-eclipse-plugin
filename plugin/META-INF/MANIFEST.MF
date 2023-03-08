@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %OpenWithEclipse_PluginName
-Bundle-SymbolicName: de.sebthom.eclipse.open-with-eclipse;singleton:=true
+Bundle-SymbolicName: de.sebthom.eclipse.open_with_eclipse;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Sebastian Thomschke
 Bundle-Localization: src/main/java/de/sebthom/eclipse/open_with_eclipse/localization/messages

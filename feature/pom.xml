@@ -11,12 +11,12 @@
    <modelVersion>4.0.0</modelVersion>
 
    <parent>
-      <groupId>de.sebthom.eclipse.open-with-eclipse</groupId>
-      <artifactId>de.sebthom.eclipse.open-with-eclipse.parent</artifactId>
+      <groupId>de.sebthom.eclipse.open_with_eclipse</groupId>
+      <artifactId>de.sebthom.eclipse.open_with_eclipse.parent</artifactId>
       <version>1.0.0-SNAPSHOT</version>
    </parent>
 
    <name>open-with-eclipse-feature</name>
-   <artifactId>de.sebthom.eclipse.open-with-eclipse.feature</artifactId>
+   <artifactId>de.sebthom.eclipse.open_with_eclipse.feature</artifactId>
    <packaging>eclipse-feature</packaging>
 </project>

@@ -17,8 +17,8 @@
    </parent>
 
    <name>open-with-eclipse</name>
-   <groupId>de.sebthom.eclipse.open-with-eclipse</groupId>
-   <artifactId>de.sebthom.eclipse.open-with-eclipse.parent</artifactId>
+   <groupId>de.sebthom.eclipse.open_with_eclipse</groupId>
+   <artifactId>de.sebthom.eclipse.open_with_eclipse.parent</artifactId>
    <version>1.0.0-SNAPSHOT</version>
    <packaging>pom</packaging>
    <inceptionYear>2021</inceptionYear>
