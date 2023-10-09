@@ -1,11 +1,11 @@
-# https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 name: Build
 
 on:
   push:
-    branches:    # build all branches
-    - '**'
-    tags-ignore: # but don't build tags
+    branches-ignore: # build all branches except:
+    - 'dependabot/**' # prevent GHA triggered twice (once for commit to the branch and once for opening/syncing the PR)
+    tags-ignore: # don't build tags
     - '**'
     paths-ignore:
     - '**/*.adoc'
@@ -28,7 +28,7 @@ on:
         required: false
         default: ''
       debug-with-ssh:
-        description: "Start an SSH session for debugging purposes after tests ran:"
+        description: "Start an SSH session for debugging purposes at the end of the build:"
         default: never
         type: choice
         options: [ always, on_failure, on_failure_or_cancelled, never ]
@@ -47,14 +47,18 @@ env:
   KEYSTORE_PW: whatever
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+
     steps:
     - name: Show environment variables
       run: env | sort
 
+
     - name: Git Checkout
-      uses: actions/checkout@v4 #https://github.com/actions/checkout
+      uses: actions/checkout@v4 # https://github.com/actions/checkout
 
 
     - name: Configure fast APT repository mirror
@@ -149,7 +153,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RELEASE_NAME: latest
       # https://cli.github.com/manual/gh_release_delete
-      run: gh release delete "$RELEASE_NAME" --yes --cleanup-tag || true
+      run: |
+        GH_DEBUG=1 gh release delete "$RELEASE_NAME" --yes --cleanup-tag || true
 
 
     - name: "Create 'latest' release"
@@ -159,11 +164,11 @@ jobs:
         RELEASE_NAME: latest
       # https://cli.github.com/manual/gh_release_create
       run: |
-        gh release create "$RELEASE_NAME" \
-          --latest \
+        GH_DEBUG=1 gh release create "$RELEASE_NAME" \
           --prerelease \
+          --latest \
+          --notes "${{ github.event.head_commit.message }}" \
           --target "${{ github.sha }}" \
-          --notes "$RELEASE_NAME" \
           updatesite/target/de.sebthom.eclipse.open_with_eclipse.updatesite.zip
 
 
@@ -241,7 +246,6 @@ jobs:
     - name: "SSH session for debugging: check"
       id: DEBUG_SSH_SESSSION_CHECK
       if: always()
-      shell: bash
       run: |
         set -eu
 
