@@ -4,7 +4,7 @@
  */
 package de.sebthom.eclipse.open_with_eclipse.localization;
 
-import static net.sf.jstuff.core.validation.NullAnalysisHelper.*;
+import static net.sf.jstuff.core.validation.NullAnalysisHelper.lateNonNull;
 
 import de.sebthom.eclipse.commons.localization.MessagesInitializer;
 
@@ -20,7 +20,7 @@ public final class Messages {
 
    // CHECKSTYLE:IGNORE .* FOR NEXT 100 LINES
 
-   public static String OpenWithEclipse_PluginName = lazyNonNull();
+   public static String OpenWithEclipse_PluginName = lateNonNull();
    public static String OpenWithEclipse_OpenWith = "Open with {0}";
    public static String OpenWithEclipse_Pref_CreateOpenWithRegistration = "Create Windows context/right-click menu entry";
    public static String OpenWithEclipse_Pref_ContextMentyEntryLabel = "Menu entry name:";
