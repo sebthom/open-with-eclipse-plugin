@@ -37,7 +37,7 @@ public class StartupListener implements IStartup {
       WindowsRegistryHelper.purgeInvalidOpenWithRegistryEntries();
 
       if (PluginPreference.isCreateOpenWithRegistration() //
-         && !WindowsRegistryHelper.hasOpenWithRegistryEntry()) {
+            && !WindowsRegistryHelper.hasOpenWithRegistryEntry()) {
 
          UI.run(() -> {
             final var menuEntryLabel = MutableObservableRef.of(PluginPreference.getOpenWithContextMenuEntryLabel());

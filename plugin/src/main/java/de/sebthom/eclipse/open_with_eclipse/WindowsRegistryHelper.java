@@ -72,7 +72,7 @@ public abstract class WindowsRegistryHelper {
             if (command != null) {
                final var exePath = Strings.substringBetween(command, "\"", "\"");
                if (Strings.endsWithIgnoreCase(exePath, ".exe") //
-                  && !Files.exists(Path.of(exePath))) {
+                     && !Files.exists(Path.of(exePath))) {
                   HKEY_CURRENT_USER.deleteKey(keyPath, true);
                   deleted++;
                }
