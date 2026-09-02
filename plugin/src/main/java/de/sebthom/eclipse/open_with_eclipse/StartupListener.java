@@ -4,6 +4,7 @@
  */
 package de.sebthom.eclipse.open_with_eclipse;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
@@ -54,7 +55,7 @@ public class StartupListener implements IStartup {
             ) {
                @Override
                @SuppressWarnings("unused")
-               protected Control createCustomArea(final Composite parent) {
+               protected @NonNull Control createCustomArea(final Composite parent) {
                   new Label(parent, SWT.NONE); // spacer
 
                   final var question = new Label(parent, SWT.NONE);
